@@ -6,7 +6,7 @@ import (
 
 func MergeSort(list []int, numberOfWorkers int) []int {
 
-	useThreshold := !(numberOfWorkers <= 1)
+	useThreshold := !(numberOfWorkers <= 0)
 
 	size := len(list)
 	middle := size / 2
@@ -29,10 +29,10 @@ func MergeSort(list []int, numberOfWorkers int) []int {
 		//worker
 		go func() {
 			defer wg.Done()
-			left = MergeSort(list[:middle], numberOfWorkers - 1)
+			left = MergeSort(list[:middle], numberOfWorkers / 2)
 		}()
 
-		right = MergeSort(list[middle:], numberOfWorkers - 1)
+		right = MergeSort(list[middle:], numberOfWorkers / 2)
 
 		wg.Wait()
 	}
