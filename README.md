@@ -1,4 +1,4 @@
-Parallel Version of Merge Sort Algorithm
+## Parallel Version of Merge Sort Algorithm
 
 To run the algorithm do the following step:
 ```
