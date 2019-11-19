@@ -24,7 +24,7 @@ func MergeSort(list []int, numberOfWorkers int) []int {
 		right = MergeSort(list[middle:], numberOfWorkers)
 	} else {
 		var wg sync.WaitGroup
-		wg.Add(2)
+		wg.Add(1)
 
 		//worker
 		go func() {
@@ -32,11 +32,7 @@ func MergeSort(list []int, numberOfWorkers int) []int {
 			left = MergeSort(list[:middle], numberOfWorkers - 1)
 		}()
 
-		//worker
-		go func() {
-			defer wg.Done()
-			right = MergeSort(list[middle:], numberOfWorkers - 1)
-		}()
+		right = MergeSort(list[middle:], numberOfWorkers - 1)
 
 		wg.Wait()
 	}

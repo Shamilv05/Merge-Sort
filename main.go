@@ -9,7 +9,7 @@ import (
 
 func main() {
 	numberOfItems := 1000000
-	threshold := 2
+	threshold := 3
 
 	items := rand.Perm(numberOfItems)
 	start := time.Now()
